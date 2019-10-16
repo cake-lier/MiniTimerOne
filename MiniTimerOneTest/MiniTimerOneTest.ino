@@ -13,13 +13,12 @@ void setup() {
     Serial.begin(9600);
     firstInterruptCount = 0;
     secondInterruptCount = 0;
-    state = FIRST_PART;
     lastTime = 0;
     /* initializes the timer for the test */
-    MiniTimer1.init();
-    MiniTimer1.setPeriod(FIRST_PERIOD);
-    MiniTimer1.attachInterrupt(firstInterrupt);
-    MiniTimer1.start();
+    MiniTimerOne.init();
+    MiniTimerOne.setPeriod(FIRST_PERIOD);
+    MiniTimerOne.attachInterrupt(firstInterrupt);
+    MiniTimerOne.start();
 }
 
 void loop() {
@@ -39,13 +38,13 @@ void firstInterrupt(void) {
     } else {
         /* stops the timer, reset the count, sets the new period and prepare for the 
          * second type of interrupt */
-        MiniTimer1.stop();
-        MiniTimer1.reset();
-        MiniTimer1.setPeriod(SECOND_PERIOD);
-        MiniTimer1.attachInterrupt(secondInterrupt);
+        MiniTimerOne.stop();
+        MiniTimerOne.reset();
+        MiniTimerOne.setPeriod(SECOND_PERIOD);
+        MiniTimerOne.attachInterrupt(secondInterrupt);
         lastTime = 0;
         /* starts the second phase of the test */
-        MiniTimer1.start();
+        MiniTimerOne.start();
     }
 }
 
@@ -62,6 +61,6 @@ void secondInterrupt(void) {
         secondInterruptCount++;
     } else {
         /* stops the test */
-        MiniTimer1.stop();
+        MiniTimerOne.stop();
     }
 }
