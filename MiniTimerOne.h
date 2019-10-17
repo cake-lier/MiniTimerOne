@@ -58,9 +58,6 @@ class MiniTimerOne {
     private:
         static MiniTimerOne *SINGLETON;
 
-        /*
-         * Default constructor.
-         */
         MiniTimerOne(void);
 
         void (*_isrCallback)(void);
