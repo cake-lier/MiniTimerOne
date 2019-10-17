@@ -5,9 +5,9 @@
 #define FIRST_COUNT 10
 #define SECOND_COUNT 5
 
-unsigned long lastTime;
-int firstInterruptCount;
-int secondInterruptCount;
+volatile unsigned long lastTime;
+volatile int firstInterruptCount;
+volatile int secondInterruptCount;
 
 void setup() {
     Serial.begin(9600);
@@ -32,7 +32,7 @@ void firstInterrupt(void) {
         Serial.println("N. " + String(firstInterruptCount) 
                       + " interrupt1 - Elapsed time: " 
                       + String(actualTime - lastTime) 
-                      + "; should be " + String(FIRST_PERIOD));
+                      + "; should be " + String(FIRST_PERIOD / 1000));
         lastTime = actualTime;
         firstInterruptCount++;
     } else {
@@ -42,7 +42,7 @@ void firstInterrupt(void) {
         MiniTimer1.reset();
         MiniTimer1.setPeriod(SECOND_PERIOD);
         MiniTimer1.attachInterrupt(secondInterrupt);
-        lastTime = 0;
+        lastTime = millis();
         /* starts the second phase of the test */
         MiniTimer1.start();
     }
@@ -54,9 +54,9 @@ void secondInterrupt(void) {
         /* if the second type of interrupt was fired less than SECOND_COUNT, 
          * print the time elapsed since the last interrupt */
         Serial.println("N. " + String(secondInterruptCount) 
-                      + " interrupt1 - Elapsed time: " 
+                      + " interrupt2 - Elapsed time: " 
                       + String(actualTime - lastTime) 
-                      + "; should be " + String(SECOND_PERIOD));
+                      + "; should be " + String(SECOND_PERIOD / 1000));
         lastTime = actualTime;
         secondInterruptCount++;
     } else {
