@@ -62,5 +62,6 @@ void secondInterrupt(void) {
     } else {
         /* stops the test */
         MiniTimer1.stop();
+        Serial.println("The test has ended, please check the results!");
     }
 }

@@ -1,7 +1,3 @@
-/*
- *
- */
-
 #ifndef __MINI_TIMER_1_H__
 #define __MINI_TIMER_1_H__
 
@@ -23,20 +19,21 @@ class MiniTimerOne {
         /* 
          * Initializes the timer so as to use the CTC (Clear Timer on Compare match) timer mode, stop the timer from
          * counting CPU clock cycles and reset its counter to zero.
+         * It must be called one time before using the timer.
          */
         void init(void);
         /*
-         * Sets the period of the timer after which it puts its counter to zero and an interrupt is called. The 
-         * default value is zero, which doesn't make the timer start, but stops it.
+         * Sets the period of the timer after which the counter is put to zero and an interrupt is called.
+         * Not calling this function before starting the timer can bring to unpredictable results.
          */
         void setPeriod(unsigned long int period);
         /* 
          * Sets the function called when the interrupt is fired and enables the firing of interrupts for the timer.
-         * The default value is a pointer to a routine which does nothing.
+         * By default, the value is a pointer to a routine which does nothing.
          */
         void attachInterrupt(void (*isr)(void));
         /* 
-         * Disables the firing of interrupts.
+         * Disables the firing of interrupts, and set the function called when an interrupt is fired to the reset value.
          */
         void detachInterrupt(void);
         /* 
@@ -44,7 +41,9 @@ class MiniTimerOne {
          */
         void start(void);
         /* 
-         * Stops the timer from counting, it doesn't reset the value of the counter.
+         * Stops the timer from counting, it doesn't reset the value of the counter. That means that calling
+         * the start function after this one, without calling the reset function, will cause the first interrupt 
+         * to be called after an unknown time period.
          */
         void stop(void);
         /*
