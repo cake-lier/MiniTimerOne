@@ -1,20 +1,18 @@
 # MiniTimerOne
 
-##Preface
+## Preface
 
 Inspired by the ![TimerOne](https://github.com/PaulStoffregen/TimerOne) library, this library aims to provide an easy and minimal
 way to use the Timer1 of the ATMega328P on the Arduino Uno for generating periodic interrupts. It can be used if you need a timer
 working as a traditional one, which counts the time from with a particular time period after which it restarts from zero, if not stopped.
 Differently from the original TimerOne library, it doesn't have PWM functionalities, for a more minimal and coherent user interface.
---
 
-##Acknowledgements
+## Acknowledgements
 
 This library was made with love and rage by Matteo Castellucci and Giorgia Rondinini, but based on preexisting work made by the
 creators of the TimerOne library, the Arduino playground and the Atmel manual for the ATMega328P.
---
 
-##How to's
+## How to's
 
 To use this library, simply use the object "MiniTimer1" on which calling the below methods:
 
@@ -28,7 +26,7 @@ the timer at least one time. You can call it again whenever you need to change t
 * attachInterrupt(): sets the action to be performed when the time is up.
 * detachInterrupt(): unsets the action to be performed when the time is up.
 
-##Warnings and general notes
+## Warnings and general notes
 
 Please, please, please (We can't stress this enough) initialize your timer before using any method listed above. We don't know
 in which state you left your timer, so we can't make any guarantees on what is going to happen. For the same reasons, please
