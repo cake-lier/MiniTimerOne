@@ -51,7 +51,6 @@ void MiniTimerOne::setPeriod(unsigned long int period = 0) {
         this->_clockSelectBits = _BV(CS12) | _BV(CS10);
         OCR1A = TIMER1_MAX_VALUE - 1; 
     }
-    TCCR1B = _BV(WGM13) | this->_clockSelectBits;
 }
 
 void MiniTimerOne::attachInterrupt(void (*isr)(void) = isrDefault) {
@@ -82,5 +81,5 @@ void (*MiniTimerOne::getCallback(void))(void) {
 MiniTimerOne MiniTimer1 = *MiniTimerOne::getInstance();
 
 ISR(TIMER1_COMPA_vect) {
-    MiniTimer1.getCallback();
+    (MiniTimer1.getCallback())();
 }

@@ -16,10 +16,6 @@ void setup() {
     lastTime = 0;
     /* initializes the timer for the test */
     MiniTimer1.init();
-    Serial.println(TCCR1B);
-    Serial.println(TCCR1A);
-    Serial.println(TCNT1);
-    Serial.println(TIMSK1);
     MiniTimer1.setPeriod(FIRST_PERIOD);
     MiniTimer1.attachInterrupt(firstInterrupt);
     MiniTimer1.start();
