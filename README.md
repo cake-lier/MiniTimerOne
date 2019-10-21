@@ -14,7 +14,7 @@ creators of the TimerOne library, the Arduino playground and the Atmel manual fo
 
 ## How to's
 
-To use this library, simply use the object "MiniTimer1" on which calling the below methods:
+To use this library, simply use the object "MiniTimer1" and call on it the below methods:
 
 * init(): initializes the timer. You need to call this method once before using it. You can call it again, but seriously, it
 isn't required.
@@ -28,7 +28,7 @@ the timer at least one time. You can call it again whenever you need to change t
 
 ## Warnings and general notes
 
-Please, please, please (We can't stress this enough) **initialize your timer before using any method** listed above. We don't know
+Please, please, please (we can't stress this enough) **initialize your timer before using any method** listed above. We don't know
 in which state you left your timer, so we can't make any guarantees on what is going to happen. For the same reasons, please
 **set a period at least once during your use of the timer**. After all, what's a timer without its time to count? :)  
 Due to technical limitations of the ATmega328P, this timer can have a period of *maximum 4.194304 seconds*. If you need more 

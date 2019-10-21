@@ -29,7 +29,7 @@ class MiniTimerOne {
          */
         void init(void);
         /*
-         * Sets the period of the timer after which the counter is put to zero and an interrupt is generated.
+         * Sets the period (in microseconds) of the timer after which the counter is put to zero and an interrupt is generated.
          * Not calling this function before starting the timer can bring to unpredictable results.
          */
         void setPeriod(unsigned long int period);
