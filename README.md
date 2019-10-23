@@ -18,12 +18,13 @@ To use this library, simply use the object "MiniTimer1" and call on it the below
 
 * init(): initializes the timer. You need to call this method once before using it. You can call it again, but seriously, it
 isn't required.
-* setPeriod(): sets the period after which the timer signals that the time is up. You need to call this method before starting
-the timer at least one time. You can call it again whenever you need to change the timer period.
+* setPeriod(period): sets the period after which the timer signals that the time is up. You need to call this method before starting the timer at least one time. You can call it again whenever you need to change the timer period.
+  * "period": the time which elapses before the timer signals that the time is up. The value is in *microseconds*.
 * start(): starts the timer.
 * stop(): stops the timer. If you start it again after stopping it, the timer will restart from where it was.
 * reset(): resets the timer count. It doesn't stop it, there is another method to do that.
-* attachInterrupt(): sets the action to be performed when the time is up.
+* attachInterrupt(routine): sets the action to be performed when the time is up.
+  * "routine": the function to be called when the time is up. Its signature must be in the form of "void func(void)".
 * detachInterrupt(): unsets the action to be performed when the time is up.
 
 ## Warnings and general notes
